@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Questionário Battlefield 1</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+                url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+
+            background: rgba(20, 20, 20, 0.94);
+
+            border: 2px solid #b58b3c;
+            border-radius: 8px;
+
+            padding: 35px;
+
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d5a94f;
+            font-size: 34px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+
+        .campo {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 9px;
+            color: #ddd;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px;
+
+            background: #292929;
+            color: white;
+
+            border: 1px solid #666;
+            border-radius: 5px;
+
+            font-size: 16px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #d5a94f;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .contador {
+            text-align: right;
+            margin-top: 5px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .classes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .classe {
+            position: relative;
+        }
+
+        .classe input {
+            display: none;
+        }
+
+        .classe label {
+            padding: 13px;
+            background: #292929;
+            border: 1px solid #555;
+            border-radius: 5px;
+
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .classe input:checked + label {
+            background: #8c6b2e;
+            border-color: #d5a94f;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+
+            background: #b58b3c;
+            color: white;
+
+            border: none;
+            border-radius: 5px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #d5a94f;
+            transform: translateY(-2px);
+        }
+
+        #mensagem {
+            display: none;
+
+            margin-top: 20px;
+            padding: 15px;
+
+            text-align: center;
+
+            background: #263d26;
+            border: 1px solid #5b8c5b;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            .classes {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚔ BATTLEFIELD 1 ⚔</h1>
+
+    <p class="subtitle">
+        Questionário do Soldado
+    </p>
+
+    <form id="questionario">
+
+        <!-- Nome -->
+        <div class="campo">
+            <label for="nome">Nome / Nickname</label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome ou nickname"
+                required
+            >
+        </div>
+
+        <!-- Nível -->
+        <div class="campo">
+
+            <label for="nivel">
+                Nível no Battlefield 1
+            </label>
+
+            <input
+                type="number"
+                id="nivel"
+                min="1"
+                max="150"
+                placeholder="Digite seu nível (1 - 150)"
+                required
+            >
+
+        </div>
+
+        <!-- Classe -->
+        <div class="campo">
+
+            <label>Qual é sua classe favorita?</label>
+
+            <div class="classes">
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="assalto" value="Assalto" required>
+                    <label for="assalto">🔫 Assalto</label>
+                </div>
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="medico" value="Médico">
+                    <label for="medico">❤️ Médico</label>
+                </div>
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="suporte" value="Suporte">
+                    <label for="suporte">📦 Suporte</label>
+                </div>
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="batedor" value="Batedor">
+                    <label for="batedor">🎯 Batedor</label>
+                </div>
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="cavalaria" value="Cavalaria">
+                    <label for="cavalaria">🐎 Cavalaria</label>
+                </div>
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="piloto" value="Piloto">
+                    <label for="piloto">✈️ Piloto</label>
+                </div>
+
+                <div class="classe">
+                    <input type="radio" name="classe" id="tanqueiro" value="Tanqueiro">
+                    <label for="tanqueiro">🛡️ Tanqueiro</label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Feitos -->
+        <div class="campo">
+
+            <label for="feitos">
+                🏆 Seus maiores feitos no Battlefield 1
+            </label>
+
+            <textarea
+                id="feitos"
+                maxlength="150"
+                placeholder="Conte seus maiores feitos..."
+                required
+            ></textarea>
+
+            <div class="contador">
+                <span id="contador">0</span>/20 palavras
+            </div>
+
+        </div>
+
+        <button type="submit">
+            ENVIAR QUESTIONÁRIO
+        </button>
+
+    </form>
+
+    <div id="mensagem">
+        ✅ Questionário preenchido com sucesso!
+    </div>
+
+</div>
+
+
+<script>
+
+const formulario = document.getElementById("questionario");
+const nivel = document.getElementById("nivel");
+const feitos = document.getElementById("feitos");
+const contador = document.getElementById("contador");
+const mensagem = document.getElementById("mensagem");
+
+
+// Contador de palavras
+feitos.addEventListener("input", function () {
+
+    let palavras = feitos.value
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+    let quantidade = palavras.length;
+
+    contador.textContent = quantidade;
+
+    if (quantidade > 20) {
+
+        contador.style.color = "red";
+
+    } else {
+
+        contador.style.color = "#999";
+
+    }
+
+});
+
+
+// Envio
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const valorNivel = Number(nivel.value);
+
+    const palavras = feitos.value
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    // Verificar nível
+    if (valorNivel < 1 || valorNivel > 150) {
+
+        alert("O nível precisa estar entre 1 e 150.");
+
+        nivel.focus();
+
+        return;
+    }
+
+
+    // Verificar palavras
+    if (palavras.length > 20) {
+
+        alert("Os maiores feitos podem ter no máximo 20 palavras.");
+
+        feitos.focus();
+
+        return;
+    }
+
+
+    mensagem.style.display = "block";
+
+    formulario.reset();
+
+    contador.textContent = "0";
+
+    setTimeout(function() {
+
+        mensagem.style.display = "none";
+
+    }, 5000);
+
+});
+
+</script>
+
+</body>
+</html>
