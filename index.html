@@ -1,0 +1,255 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Questionário Battlefield 1</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .formulario {
+            max-width: 600px;
+            margin: auto;
+            padding: 25px;
+
+            background: #111;
+            border: 1px solid #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .campo {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+
+            background: #000;
+            color: #fff;
+
+            border: 1px solid #fff;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .contador {
+            text-align: right;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+
+            background: #fff;
+            color: #000;
+
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ccc;
+        }
+
+        #mensagem {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="formulario">
+
+    <h1>Questionário Battlefield 1</h1>
+
+    <form id="questionario">
+
+        <!-- Nome -->
+        <div class="campo">
+            <label for="nome">Nome / Nickname</label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome"
+                required
+            >
+        </div>
+
+
+        <!-- Nível -->
+        <div class="campo">
+            <label for="nivel">Nível no Battlefield 1</label>
+
+            <input
+                type="number"
+                id="nivel"
+                min="1"
+                max="150"
+                placeholder="1 - 150"
+                required
+            >
+        </div>
+
+
+        <!-- Classe -->
+        <div class="campo">
+            <label for="classe">Classe favorita</label>
+
+            <select id="classe" required>
+
+                <option value="">Selecione uma classe</option>
+
+                <option value="Assalto">Assalto</option>
+                <option value="Médico">Médico</option>
+                <option value="Suporte">Suporte</option>
+                <option value="Batedor">Batedor</option>
+                <option value="Cavalaria">Cavalaria</option>
+                <option value="Piloto">Piloto</option>
+                <option value="Tanqueiro">Tanqueiro</option>
+
+            </select>
+        </div>
+
+
+        <!-- Maiores feitos -->
+        <div class="campo">
+
+            <label for="feitos">
+                Seus maiores feitos
+            </label>
+
+            <textarea
+                id="feitos"
+                placeholder="Conte seus maiores feitos..."
+                required
+            ></textarea>
+
+            <div class="contador">
+                <span id="contador">0</span>/20 palavras
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            ENVIAR
+        </button>
+
+    </form>
+
+
+    <div id="mensagem">
+        Questionário enviado com sucesso!
+    </div>
+
+</div>
+
+
+<script>
+
+const formulario = document.getElementById("questionario");
+const feitos = document.getElementById("feitos");
+const contador = document.getElementById("contador");
+
+
+// Contador de palavras
+feitos.addEventListener("input", function () {
+
+    const palavras = feitos.value
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+    contador.textContent = palavras.length;
+
+});
+
+
+// Envio do formulário
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nivel = Number(
+        document.getElementById("nivel").value
+    );
+
+    const palavras = feitos.value
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    // Limite do nível
+    if (nivel < 1 || nivel > 150) {
+
+        alert("O nível deve estar entre 1 e 150.");
+
+        return;
+    }
+
+
+    // Limite de palavras
+    if (palavras.length > 20) {
+
+        alert("Os maiores feitos podem ter no máximo 20 palavras.");
+
+        return;
+    }
+
+
+    document.getElementById("mensagem").style.display = "block";
+
+    formulario.reset();
+
+    contador.textContent = "0";
+
+});
+
+</script>
+
+</body>
+</html>
+```
