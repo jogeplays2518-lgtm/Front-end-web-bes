@@ -1,0 +1,395 @@
+ <title>Recrutamento Battlefield 1</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111;
+            color: #eee;
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: #1c1c1c;
+            border: 1px solid #444;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .header {
+            background: linear-gradient(
+                rgba(0,0,0,0.55),
+                rgba(0,0,0,0.75)
+            ),
+            url("C:\Users\lucimara\OneDrive\Documentos\GitHub\Front-end-web-bes\aula04\images");
+
+            background-size: cover;
+            background-position: center;
+
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #d8a83e;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .header p {
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        form {
+            padding: 30px;
+        }
+
+        .campo {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #d8a83e;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #292929;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #d8a83e;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 180px;
+        }
+
+        .ajuda {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .contador {
+            text-align: right;
+            margin-top: 5px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #b88624;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #d8a83e;
+            color: #111;
+        }
+
+        .aviso {
+            margin-top: 20px;
+            padding: 12px;
+            background: #292929;
+            border-left: 4px solid #d8a83e;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+        .rodape {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Recrutamento Battlefield 1</h1>
+        <p>Formulário de recrutamento para novos membros</p>
+    </div>
+
+    <form id="recrutamento">
+
+        <!-- NOME -->
+        <div class="campo">
+            <label for="nome">Nome do jogador *</label>
+
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome"
+                required
+            >
+        </div>
+
+        <!-- ID -->
+        <div class="campo">
+            <label for="id">ID / Nickname no Battlefield 1 *</label>
+
+            <input
+                type="text"
+                id="id"
+                name="id"
+                placeholder="Ex.: JorgePlay"
+                required
+            >
+        </div>
+
+        <!-- NIVEL -->
+        <div class="campo">
+            <label for="nivel">Nível do jogador *</label>
+
+            <input
+                type="number"
+                id="nivel"
+                name="nivel"
+                min="1"
+                max="150"
+                placeholder="Digite um nível entre 1 e 150"
+                required
+            >
+
+            <span class="ajuda">
+                O nível deve estar entre 1 e 150.
+            </span>
+        </div>
+
+        <!-- CLASSE -->
+        <div class="campo">
+            <label for="classe">Classe favorita *</label>
+
+            <select id="classe" name="classe" required>
+
+                <option value="">Selecione sua classe</option>
+
+                <option value="Assalto">
+                    Assalto
+                </option>
+
+                <option value="Médico">
+                    Médico
+                </option>
+
+                <option value="Suporte">
+                    Suporte
+                </option>
+
+                <option value="Abatedor">
+                    Abatedor
+                </option>
+
+                <option value="Piloto">
+                    Piloto
+                </option>
+
+                <option value="Tankeiro">
+                    Tankeiro
+                </option>
+
+                <option value="Cavalaria">
+                    Cavalaria
+                </option>
+
+            </select>
+        </div>
+
+        <!-- HORAS -->
+        <div class="campo">
+            <label for="horas">Quantidade de horas jogadas *</label>
+
+            <input
+                type="number"
+                id="horas"
+                name="horas"
+                min="1"
+                placeholder="Ex.: 850"
+                required
+            >
+        </div>
+
+        <!-- ANO -->
+        <div class="campo">
+            <label for="ano">Quando você começou a jogar Battlefield 1? *</label>
+
+            <select id="ano" name="ano" required>
+
+                <option value="">Selecione o ano</option>
+
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+
+            </select>
+        </div>
+
+        <!-- FEITOS -->
+        <div class="campo">
+            <label for="feitos">
+                Seus maiores feitos no Battlefield 1 *
+            </label>
+
+            <textarea
+                id="feitos"
+                name="feitos"
+                placeholder="Conte seus maiores feitos, partidas memoráveis, recordes, operações vencidas, experiência em equipe, etc."
+                required
+            ></textarea>
+
+            <span class="ajuda">
+                Escreva no mínimo 20 palavras.
+            </span>
+
+            <div class="contador">
+                <span id="contador">0</span> / 20 palavras
+            </div>
+        </div>
+
+        <button type="submit">
+            ENVIAR RECRUTAMENTO
+        </button>
+
+        <div class="aviso">
+            ⚠️ Preencha todas as informações corretamente.
+            O recrutador poderá utilizar essas informações para avaliar
+            sua experiência no Battlefield 1.
+        </div>
+
+    </form>
+
+    <div class="rodape">
+        Recrutamento Battlefield 1 © 2026
+    </div>
+
+</div>
+
+
+<script>
+
+    const formulario = document.getElementById("recrutamento");
+    const feitos = document.getElementById("feitos");
+    const contador = document.getElementById("contador");
+
+    // Contador de palavras
+    feitos.addEventListener("input", function () {
+
+        const texto = feitos.value.trim();
+
+        if (texto === "") {
+            contador.textContent = "0";
+            return;
+        }
+
+        const palavras = texto.split(/\s+/).filter(Boolean);
+
+        contador.textContent = palavras.length;
+    });
+
+
+    // Validação do formulário
+    formulario.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const texto = feitos.value.trim();
+
+        const palavras = texto === ""
+            ? []
+            : texto.split(/\s+/).filter(Boolean);
+
+        if (palavras.length < 20) {
+
+            alert(
+                "O campo 'Seus maiores feitos' precisa conter pelo menos 20 palavras."
+            );
+
+            feitos.focus();
+
+            return;
+        }
+
+        const nivel = Number(
+            document.getElementById("nivel").value
+        );
+
+        if (nivel < 1 || nivel > 150) {
+
+            alert(
+                "O nível precisa estar entre 1 e 150."
+            );
+
+            return;
+        }
+
+        alert(
+            "Recrutamento enviado com sucesso!"
+        );
+
+        formulario.reset();
+
+        contador.textContent = "0";
+    });
+
+</script>
+
+</body>
+</html>
