@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo de Pedro</title>
+
+</head>
+
+<body>
+  <header">
+    <img src="Screenshot 2026-08-17 214711.png" alt="Foto de perfil, usei um personagem de anime porque eu não tenho no computador">
+    <h1>Pedro Henrique Milena Coitinho</h1>
+    <p>Rua serra de roraima 1135</p>
+    <p>(43)99826-2517</p>
+    <p>
+      <a href="https://github.com/PedroCoitinh0" target="_blank">https://github.com/PedroCoitinh0</a>
+    </p>
+    <p>
+      <a href="mailto:pedro.henrique002kaka@gmail.com" target="_blank">pedro.henrique002kaka@gmail.com</a>
+    </p>
+
+    <p>
+      <a href="#">LinkedIn</a>
+    </p>
+    </header>
+
+    <main>
+
+      <section>
+        <h2>Resumo</h2>
+        <p>Ajudante de Técnico de ar condicionado</p>
+      </section>
+
+      <section>
+        <h2>Formação</h2>
+        <ol>
+          <li><strong>Na escola</strong></li>
+          <li><strong>E na rua</strong></li>
+          <li><strong>Sei todos os combos do yasuo</strong></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Habilidades técnicas</h2>
+        <ul>
+          <li><strong>HTML</strong></li>
+          <li><strong>CSS</strong></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Idiomas</h2>
+        <table border="1">
+          <tr>
+            <th>Idiomas</th>
+            <th>Nível</th>
+          </tr>
+          <tr>
+            <td>Português</td>
+            <td>Nativo</td>
+          </tr>
+          <tr>
+            <td>Inglês</td>
+            <td>Básico</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+    <hr>
+    <footer>
+      <p>Currículo atualizado em <em>17/08/2026</em>.</p>
+    </footer>
+</body>
+
+</html>
