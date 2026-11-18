@@ -1,6 +1,8 @@
+
 function executar(evento) {
   evento.preventDefault();
   limparForm();
+
   if (!validarForm()) {
     return;
   }
@@ -12,11 +14,14 @@ async function chamarApi() {
   const dados = {
     nome: document.querySelector("#nome").value,
     idade: Number(document.querySelector("#idade").value),
-    celular: document
-      .querySelector("#celular")
-      .value.replace(/\D/g, "")
-      .slice(0, 11),
+    celular: document.querySelector("#celular").value.replace(/\D/g, ""),
     email: document.querySelector("#email").value,
+    cpf: document.querySelector("#cpf").value.replace(/\D/g, ""),
+    cep: document.querySelector("#cep").value.replace(/\D/g, ""),
+    endereco: document.querySelector("#endereco").value,
+    numero: Number(document.querySelector("#numero").value),
+    bairro: document.querySelector("#bairro").value,
+    cidade: document.querySelector("#cidade").value
   };
 
   try {
@@ -31,45 +36,95 @@ async function chamarApi() {
     }
 
     const resultado = await resposta.json();
-    alert(`Cadastro realizado com sucesso, ${resultado.json.email}!`);
+
+    alert("Retorno da API:\n" + JSON.stringify(resultado, null, 2));
+
   } catch (erro) {
     alert("Não foi possível enviar o cadastro: " + erro.message);
   }
 }
 
 function validarForm() {
-  const nome = document.querySelector("#nome").value;
-  const erroNome = document.querySelector("#erro-nome");
+  let valido = true;
+
+  function mostrarErro(id, mensagem) {
+    const erro = document.querySelector("#erro-" + id);
+    erro.textContent = mensagem;
+    erro.classList.add("erro");
+    erro.classList.remove("oculto");
+    valido = false;
+  }
+
+  const nome = document.querySelector("#nome").value.trim();
+
   if (nome === "") {
-    erroNome.textContent = "Nome não pode estar vazio!";
-    erroNome.classList.add("erro");
-    erroNome.classList.remove("oculto");
+    mostrarErro("nome", "Nome não pode estar vazio!");
   }
 
   const idade = document.querySelector("#idade").value;
-  const erroIdade = document.querySelector("#erro-idade");
+
   if (idade === "") {
-    erroIdade.textContent = "Idade não pode estar vazio!";
-    erroIdade.classList.add("erro");
-    erroIdade.classList.remove("oculto");
+    mostrarErro("idade", "Idade não pode estar vazia!");
   } else if (Number(idade) < 18) {
-    erroIdade.textContent = "É necessário ter 18 anos!";
-    erroIdade.classList.add("erro");
-    erroIdade.classList.remove("oculto");
+    mostrarErro("idade", "É necessário ter 18 anos!");
   }
 
-  // DESAFIO VALIDAR O EMAIL COM REGEX
+  const celular = document.querySelector("#celular").value.replace(/\D/g, "");
+
+  if (celular.length !== 10 && celular.length !== 11) {
+    mostrarErro("celular", "Informe um celular válido!");
+  }
+
+  const email = document.querySelector("#email").value;
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!regexEmail.test(email)) {
+    mostrarErro("email", "Informe um email válido!");
+  }
+
+  const cpf = document.querySelector("#cpf").value.replace(/\D/g, "");
+
+  if (cpf.length !== 11) {
+    mostrarErro("cpf", "O CPF deve conter 11 números!");
+  }
+
+  const cep = document.querySelector("#cep").value.replace(/\D/g, "");
+
+  if (cep.length !== 8) {
+    mostrarErro("cep", "O CEP deve conter 8 números!");
+  }
+
+  const endereco = document.querySelector("#endereco").value.trim();
+
+  if (endereco === "") {
+    mostrarErro("endereco", "Endereço não pode estar vazio!");
+  }
+
+  const numero = document.querySelector("#numero").value;
+
+  if (numero === "" || Number(numero) <= 0) {
+    mostrarErro("numero", "Informe um número válido!");
+  }
+
+  const bairro = document.querySelector("#bairro").value.trim();
+
+  if (bairro === "") {
+    mostrarErro("bairro", "Bairro não pode estar vazio!");
+  }
+
+  const cidade = document.querySelector("#cidade").value.trim();
+
+  if (cidade === "") {
+    mostrarErro("cidade", "Cidade não pode estar vazia!");
+  }
 
   const termos = document.querySelector("#termos");
-  const erroTermos = document.querySelector("#erro-termos");
+
   if (!termos.checked) {
-    erroTermos.textContent = "É preciso aceitar os termos!";
-    erroTermos.classList.add("erro");
-    erroTermos.classList.remove("oculto");
+    mostrarErro("termos", "É preciso aceitar os termos!");
   }
 
   const concluido = document.querySelector("#concluido");
-  const valido = document.querySelectorAll(".erro").length === 0;
 
   if (!valido) {
     concluido.textContent = "Corrija os erros antes de prosseguir!";
@@ -80,12 +135,14 @@ function validarForm() {
   return valido;
 }
 
-//() => {} arrow function
+// () => {} arrow function
+
 function limparForm() {
   document.querySelectorAll(".erro").forEach((item) => {
     item.classList.remove("erro");
     item.classList.add("oculto");
   });
+
   document.querySelector("#concluido").classList.add("oculto");
 }
 
